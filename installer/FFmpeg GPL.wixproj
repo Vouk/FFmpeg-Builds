@@ -27,6 +27,7 @@
   </Target>
   <PropertyGroup>
     <PreBuildEvent />
+    <Name>FFmpeg GPL</Name>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent />

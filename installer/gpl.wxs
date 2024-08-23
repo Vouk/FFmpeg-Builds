@@ -37,14 +37,14 @@
 				<Directory Id="INSTALLFOLDER" Name="FFmpeg">
 					<Directory Id="ffmpeg" Name="ffmpeg">
 						<Component Id="FFmpeg" Guid="FC83373A-2161-475B-951D-B62468926976">
-							<File Id="avcodec70" Source="..\3rdparty\$(env.FFmpegDir)\bin\avcodec-61.dll" />
-							<File Id="avdevice70" Source="..\3rdparty\$(env.FFmpegDir)\bin\avdevice-61.dll" />
-							<File Id="avfilter70" Source="..\3rdparty\$(env.FFmpegDir)\bin\avfilter-10.dll" />
-							<File Id="avformat70" Source="..\3rdparty\$(env.FFmpegDir)\bin\avformat-61.dll" />
-							<File Id="avutil70" Source="..\3rdparty\$(env.FFmpegDir)\bin\avutil-59.dll" />
-							<File Id="swresample70" Source="..\3rdparty\$(env.FFmpegDir)\bin\swresample-5.dll" />
-							<File Id="swscale70" Source="..\3rdparty\$(env.FFmpegDir)\bin\swscale-8.dll" />
-      				<Environment Id="env_PATH" Name="PATH" Value="[INSTALLFOLDER]" Part="last" Action="set" System="yes" />
+							<File Id="avcodec70" Source="..\$(env.FFmpegDir)\bin\avcodec-61.dll" />
+							<File Id="avdevice70" Source="..\$(env.FFmpegDir)\bin\avdevice-61.dll" />
+							<File Id="avfilter70" Source="..\$(env.FFmpegDir)\bin\avfilter-10.dll" />
+							<File Id="avformat70" Source="..\$(env.FFmpegDir)\bin\avformat-61.dll" />
+							<File Id="avutil70" Source="..\$(env.FFmpegDir)\bin\avutil-59.dll" />
+							<File Id="swresample70" Source="..\$(env.FFmpegDir)\bin\swresample-5.dll" />
+							<File Id="swscale70" Source="..\$(env.FFmpegDir)\bin\swscale-8.dll" />
+      				        <Environment Id="env_PATH" Name="PATH" Value="[INSTALLFOLDER]" Part="last" Action="set" System="yes" />
 						</Component>
 					</Directory>
 				</Directory>
