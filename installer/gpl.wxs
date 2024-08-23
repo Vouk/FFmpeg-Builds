@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	 xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+
+	<?include Version.wxi?>
+	
+	<Product Id="*" 
+			 Name="FFmpeg 7.0" 
+			 Language="1033" 
+			 Version="$(var.ProductVersion)" 
+			 Manufacturer="The FFmpeg developers" 
+			 UpgradeCode="efdde5bd-3b27-49a1-b4e9-a5c3ac34cf82">
+		
+		<Package InstallerVersion="301"
+				 Compressed="yes"
+				 InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of FFmpeg is already installed." />
+		
+		<Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high" />
+
+		<Feature Id="FFmpeg" Title="FFmpeg" Level="1" ConfigurableDirectory="INSTALLFOLDER" InstallDefault="local" Absent="disallow" Description="The FFmpeg main installation directory.">
+			<ComponentRef Id="FFmpeg" />
+		</Feature>
+
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+
+		<WixVariable Id="WixUILicenseRtf" Value="gpl.rtf" />
+
+		<UIRef Id="WixUI_FeatureTree" />
+		
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFiles64Folder">
+				<Directory Id="INSTALLFOLDER" Name="FFmpeg">
+					<Directory Id="ffmpeg" Name="ffmpeg">
+						<Component Id="FFmpeg" Guid="FC83373A-2161-475B-951D-B62468926976">
+							<File Id="avcodec70" Source="..\3rdparty\$(env.FFmpegDir)\bin\avcodec-61.dll" />
+							<File Id="avdevice70" Source="..\3rdparty\$(env.FFmpegDir)\bin\avdevice-61.dll" />
+							<File Id="avfilter70" Source="..\3rdparty\$(env.FFmpegDir)\bin\avfilter-10.dll" />
+							<File Id="avformat70" Source="..\3rdparty\$(env.FFmpegDir)\bin\avformat-61.dll" />
+							<File Id="avutil70" Source="..\3rdparty\$(env.FFmpegDir)\bin\avutil-59.dll" />
+							<File Id="swresample70" Source="..\3rdparty\$(env.FFmpegDir)\bin\swresample-5.dll" />
+							<File Id="swscale70" Source="..\3rdparty\$(env.FFmpegDir)\bin\swscale-8.dll" />
+      				<Environment Id="env_PATH" Name="PATH" Value="[INSTALLFOLDER]" Part="last" Action="set" System="yes" />
+						</Component>
+					</Directory>
+				</Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+</Wix>
