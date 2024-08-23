@@ -25,7 +25,7 @@
 
 		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
 
-		<WixVariable Id="WixUILicenseRtf" Value="lgpl.rtf" />
+		<WixVariable Id="WixUILicenseRtf" Value="lgpl-2.1.txt" />
 
 		<UIRef Id="WixUI_FeatureTree" />
 		
