@@ -232,7 +232,6 @@ jobs:
           SLUG="${{ matrix.target }}-${{ matrix.variant }}"
           echo "artifact_slug=${SLUG// /-}" >> $GITHUB_OUTPUT
           ls -la
-          rem dir /s
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
