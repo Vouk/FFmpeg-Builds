@@ -231,13 +231,27 @@ jobs:
         run: |
           SLUG="${{ matrix.target }}-${{ matrix.variant }}"
           echo "artifact_slug=${SLUG// /-}" >> $GITHUB_OUTPUT
-          ls -lar
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ffmpeg-${{ steps.strs.outputs.artifact_slug }}
           overwrite: true
           path: artifacts/*
+  build-installer:
+    name: Build installer
+    if: ${{ ( github.event.inputs.buildOnly == 'true' && !cancelled() ) || success() }}
+    needs: build_ffmpeg
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [win64]
+        variant: [lgpl-shared 7.0,gpl-shared 7.0]
+    steps:
+      - name: Replace spaces in string
+        id: strs
+        run: |
+          ls -laR
   publish_release:
     name: Publish release
     if: ${{ !cancelled() && ( github.event_name == 'schedule' || github.event.inputs.doRelease == 'true' ) && needs.build_ffmpeg.result == 'success' }}
