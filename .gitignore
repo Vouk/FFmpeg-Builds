@@ -3,3 +3,5 @@
 /artifacts/
 /.cache/
 /installer/.vs/FFmpeg
+/installer/bin/x64/Release
+/installer/obj/Release
